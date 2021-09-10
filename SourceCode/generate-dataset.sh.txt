@@ -1,0 +1,19 @@
+#!/bin/bash
+#generates dataset script
+#Solution of Homework0-Q3.a
+
+#read file
+echo "Name of file $1"
+touch $1
+
+#read records
+echo "Number of records $2"
+
+#integers should be any random number upto a 32-bit integer. 2^32-1 = 4294967295
+
+END=$2
+for ((i=1;i<=END; i++)): do
+	a=$(shuf -i 0-4294967295 -n 1)
+	b=$(shuf -zer -n95 {A..F} {0..9})
+	echo "$a $b" >>$1
+done

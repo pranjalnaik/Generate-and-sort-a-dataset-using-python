@@ -1,0 +1,28 @@
+import sys
+
+#write data to output file
+def file(sdata):
+	sdatafile=open("sortedyellowPython", 'w')
+	for data in sdata:
+		sdata.write(data[0] + " " + data[1])
+	sdatafile.close()
+#key is returned here
+def keys(listofdata):
+	return int(listofdata[0])
+#Main function
+def main():
+	storage_list=[]
+	dataset_file=open("yellow",'r')
+	row=dataset_file.readlines()
+	dataset_file.close()
+#data is split
+	for i in row:
+		storage_list.append(i.split(" "))
+#sorted using values from column 1
+	sortedyellow=sorted(storage_list, key=keys)
+	file(sortedyellow)
+	
+#calling the constructor
+if __name__=="__main__":
+	main()
+	

@@ -1,0 +1,5 @@
+#!/bin/bash
+#Sorts the data taking the input from the first column of part Homework0.3.q
+#Solution of Homework0-3b
+
+sort -k1 -n yellow > sorted_yellow

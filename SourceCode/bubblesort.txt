@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<iostream.h>
+int bubble(int *,int *,int);
+void sortfile();
+/***sorting function***/
+int bubble(int x[],int y[]int n)
+{
+    int pass,i,j,hold1,hold2, switched-1;
+    for(pass = 0;pass <n-1&&switched ==1;pass++)
+    {
+        switched=0;
+        for(j=0;j<n-pass-1;j++)
+        {
+            if(x[j]>x[j+1])
+            {
+                switched=1;
+                hold=x[j];
+                hold2=y[j];
+                x[j]=x[j+1];
+                y[j]=y[j+1];
+                x[j+1]=hold1;
+                y[j+1]=hold2;
+            }
+        }
+    }
+    return 0;
+}
+/***file sorting***/
+void sortfile()
+{
+    int col1[1000],col2[1000],x[1000],y[1000],n,i,j;
+    FILE *data;
+    data = fopen("generate-dataset.sh","r+");
+    i=0;
+    while(!feof(data))
+    {
+        fscanf(data,"%d %d\n",&col1[i],&col2[i]);
+        x[i]=col1[i];
+        y[i]=col2[i];
+        i=i+1;
+    }
+    n=i;
+    bubble(x,y,n);
+    fclose(data);
+    fopen("generate-dataset.sh","w+");
+    for(i=0;i<n-1;i++)
+    {
+        fprintf(data,"%d %d\n",x[i],y[i]);
+    }
+    fclose(data);
+}
+void main()
+{
+    int col1[1000],col2[1000],x[1000],y[1000],n,i,j;
+    sortfile();
+}
